@@ -18,9 +18,6 @@ import requests
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 
-login_session['username'] = 'test'
-login_session['email'] = 'test'
-
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -181,8 +178,8 @@ def mainCatalog():
 @app.route('/newCategory', methods=['GET', 'POST'])
 def newCategory():
     if 'username' not in login_session:
-        #return redirect('/login')
-        pass
+        return redirect('/login')
+        
 
     if request.method == 'POST':
         newCategory = Category(
