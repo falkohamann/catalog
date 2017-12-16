@@ -27,7 +27,7 @@ APPLICATION_NAME = "Item Catalog Application"
 # Connect to Database and create database session
 engine = create_engine('postgresql://catalog:catalog@localhost:5432/catalog')
 Base.metadata.bind = engine
-
+Base.metadata.create_all(bind=engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
