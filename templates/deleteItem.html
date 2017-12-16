@@ -1,0 +1,16 @@
+{% extends "mainHTML.html" %}
+{% block content %}
+<nav id="drawer" class="nav">
+  <ul class="nav__list">
+  <li class="nav__item"><a href = '{{url_for('showContentCategory', category_id = category_id)}}'>Go Back</a></li>
+  </ul>
+</nav>
+<main class="catalog">
+  <div class="grid">
+    <div class="cell">
+    <form action="#" method = 'post'>
+      <label for="editItem">Delete item {{item.name}}?:</label>
+      <button type="submit" name="submit" value='delete'>Yes</button>
+    </form>
+  </div></div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "mainHTML.html" %}
+{% block content %}
+<nav id="drawer" class="nav">
+  <ul class="nav__list">
+  <li class="nav__item"><a href = '{{url_for('mainCatalog')}}'>Go Back</a></li>
+  </ul>
+</nav>
+<main class="catalog">
+   <div class="grid">
+     <div class="cell">
+          <form action="#" method = "post">
+      				<label for="newCategory">Please enter the name of the new Category:</label>
+            </br>
+      				<input type ="text" maxlength="100" name="newCategory">
+      				<button type="submit" id="submit" type="submit">
+      				Create</button>
+              </form>
+          </div>
+				</div>
+</main>
+{% endblock %}

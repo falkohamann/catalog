@@ -1,0 +1,38 @@
+{% extends "mainHTML.html" %}
+{% block content %}
+        <nav id="drawer" class="nav">
+      	  <ul class="nav__list">
+      		<li class="nav__item"><a href='{{ url_for('newCategory')}}'>Create new Category</a></li>
+      	  </ul>
+	       </nav>
+         <main class="catalog">
+      <div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul>
+              {% for message in messages %}
+              <li> <strong> {{ message }} </strong> </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+    </div>
+    <div class="grid">
+    {% for category in categories %}
+      <div class="cell">
+		  <h2><a href="{{url_for('showContentCategory', category_id = category.id)}}">{{category.name}}</a></h2>
+      </br>
+      <h5>by {{category.owner}}</h5>
+      {% if user['email'] == category.owner %}
+          <a href = {{url_for('editCategory', category_id = category.id)}}>
+              Edit Category
+          </a></br>
+          <a href = {{url_for('deleteCategory', category_id = category.id)}}>
+              Delete Category
+          </a></br>
+      {% endif %}
+    </div>
+  	{% endfor %}
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,20 @@
+<html>
+  <head>
+      <title>Falkos Catalog</title>
+  </head>
+  <body>
+    <div class="header">
+        <div class="header_inner">
+          {% if user %}
+            <p>logged in as with {{user}}</p>
+            <p><a href="#">Logout</a></p>
+          {% else %}
+            <p><a href="#">Login</a></p>
+          {% endif %}
+        <h1 class="header_title">
+            Falko Hamann
+        </h1>
+        <h6 class="header_subtext">
+          The surest way to find your dream job is to create it.
+        </h6>
+        </div>

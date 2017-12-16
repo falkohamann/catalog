@@ -1,0 +1,45 @@
+
+{% extends "mainHTML.html" %}
+{% block content %}
+<nav id="drawer" class="nav">
+      	  <ul class="nav__list">
+      		<li class="nav__item"><a href='{{ url_for('newItem', category_id = category.id)}}'>Create new Item </a></li>
+            <li class="nav__item"><a href = '{{url_for('mainCatalog')}}'>Go Back</a></li>
+      	  </ul>
+	       </nav>
+
+         <main class="catalog">
+      <div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul>
+              {% for message in messages %}
+              <li> <strong> {{ message }} </strong> </li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+    </div>
+    <div class="grid">
+    {% if items !=[] %}
+      {% for i in items %}
+      <div class="cell">
+        <h2>{{i.name}}</h2></br>
+        <h4>{{i.description}}</h4>
+      <h5>by {{i.owner}}</h5></br>
+      {% if user['email'] == category.owner %}
+        <a href='{{url_for('editItem', category_id = category.id, item_id = i.id)}}'>
+            Edit Item
+        </a></br>
+        <a href='{{url_for('deleteItem', category_id = category.id, item_id = i.id)}}'>
+            Delete item
+        </a></br>
+        {% endif %}
+      </div>
+      {% endfor %}
+      {% else %}
+      <h3>No items in category {{category.name}}</h3>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

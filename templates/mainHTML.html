@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <title>Falkos Catalog</title>
+	</head>
+	<body>
+    <header class="header">
+	  <div class="header_inner">
+      <h1 class="header_title">
+			Falko Hamanns Catalog
+		</h1>
+      <h4 class="header_user">
+        {% if user['email'] %}
+          logged in as: {{user['username']}}
+        </br>
+          <a href = '{{url_for('disconnect')}}'>Logoff</a>
+        {% else %}
+          <a href = '{{url_for('showLogin')}}'>Login</a>
+        {% endif %}
+      </h4>
+    </div>
+   </header>
+  			{% block content %}
+  			{% endblock %}
+    </main>
+	</body>
+</html>

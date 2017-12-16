@@ -1,0 +1,23 @@
+{% extends "mainHTML.html" %}
+{% block content %}
+<nav id="drawer" class="nav">
+  <ul class="nav__list">
+  <li class="nav__item"><a href = '{{url_for('showContentCategory', category_id = category_id)}}'>Go Back</a></li>
+  </ul>
+</nav>
+<main class="catalog">
+  <div class="grid">
+      <div class="cell">
+      <form action="" method = "post">
+				<label for="editCategory">Please enter the new name of {{item.name}}:</label>
+      </br>
+				<input type ="text" maxlength="100" name="name" placeholder="{{item.name}}">
+        </br>
+        <label for="itemDescription">Description:</label></br>
+        <textarea maxlength="250" rows="3" name="description" placeholder="{{item.description}}"></textarea>
+      </br>
+				<button type="submit" type="submit" value='submit'>Edit</button>
+      </form>
+    </div></div>
+</main>
+{% endblock %}
