@@ -44,6 +44,3 @@ class Item(Base):
            'id'             : self.id,
            'owner'          : self.owner,
        }
-
-engine = create_engine('sqlite:///itemcatalog.db')
-Base.metadata.create_all(engine)
