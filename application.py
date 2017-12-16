@@ -178,7 +178,8 @@ def mainCatalog():
 @app.route('/newCategory', methods=['GET', 'POST'])
 def newCategory():
     if 'username' not in login_session:
-        return redirect('/login')
+        #return redirect('/login')
+        pass
 
     if request.method == 'POST':
         newCategory = Category(
@@ -195,7 +196,8 @@ def newCategory():
 @app.route('/category/<int:category_id>/edit/', methods=['GET', 'POST'])
 def editCategory(category_id):
     if 'username' not in login_session:
-        return redirect('/login')
+        #return redirect('/login')
+        pass
 
     editedCategory = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
@@ -217,7 +219,8 @@ def editCategory(category_id):
 @app.route('/category/<int:category_id>/delete', methods=['GET', 'POST'])
 def deleteCategory(category_id):
     if 'username' not in login_session:
-        return redirect('/login')
+        #return redirect('/login')
+        pass
 
     deleteCategory = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
@@ -246,7 +249,8 @@ def showContentCategory(category_id):
 @app.route('/category/<int:category_id>/item/new', methods=['GET', 'POST'])
 def newItem(category_id):
     if 'username' not in login_session:
-        return redirect('/login')
+        #return redirect('/login')
+        pass
 
     category = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
@@ -272,7 +276,8 @@ def newItem(category_id):
             methods=['GET', 'POST'])
 def editItem(category_id, item_id):
     if 'username' not in login_session:
-        return redirect('/login')
+        #return redirect('/login')
+        pass
 
     editedItem = session.query(Item).filter_by(id=item_id).one()
     category = session.query(Category).filter_by(id=category_id).one()
@@ -300,8 +305,8 @@ def editItem(category_id, item_id):
             methods=['GET', 'POST'])
 def deleteItem(category_id, item_id):
     if 'username' not in login_session:
-        return redirect('/login')
-
+        #return redirect('/login')
+        pass
     deleteItem = session.query(Item).filter_by(id=item_id).one()
     category = session.query(Category).filter_by(id=category_id).one()
     if request.method == 'POST':
