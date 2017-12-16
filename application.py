@@ -19,7 +19,7 @@ from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 
 app = Flask(__name__)
-
+app.secret_key = 'super_secret_key'
 CLIENT_ID = json.loads(
     open('/var/www/catalog/catalog/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Item Catalog Application"
@@ -332,6 +332,6 @@ def categoryItemsJSON(category_id):
     return jsonify(CategoryItems=[i.serialize for i in items])
 
 if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
+
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
