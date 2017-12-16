@@ -20,6 +20,9 @@ from oauth2client.client import FlowExchangeError
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
+app.config['SESSION_TYPE'] = 'filesystem'
+sess.init_app(app)
+
 CLIENT_ID = json.loads(
     open('/var/www/catalog/catalog/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Item Catalog Application"
