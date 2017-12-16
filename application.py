@@ -4,6 +4,7 @@ from flask import session as login_session
 from flask import make_response
 
 from sqlalchemy import create_engine, asc
+from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
 
 from database_setup import Base, Category, Item
@@ -24,9 +25,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Item Catalog Application"
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:////var/www/catalog/itemcatalog.db',
-    connect_args={'check_same_thread': False},
-    poolclass=StaticPool, echo=True)
+engine = create_engine('postgresql://catalog:catalog@localhost:5432/catalog)
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
